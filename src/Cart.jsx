@@ -54,7 +54,7 @@ const Cart = () => {
 
             <hr style={{ border: '2px solid black', width: '100%' }} />
 
-            <Typography variant="h4">Total Amount: {totalAmount}</Typography>
+            <Typography variant="body2">Total Amount: {totalAmount}</Typography>
           </Box>
 
         </Box>
