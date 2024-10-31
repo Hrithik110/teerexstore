@@ -50,7 +50,7 @@ const Cart = () => {
 
           ))}
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%' }}>
 
             <hr style={{ border: '2px solid black', width: '100%' }} />
 
