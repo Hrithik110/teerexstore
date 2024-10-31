@@ -3,11 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProviderContext } from './ThemeProvider/ThemeContext';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import Cart from './Cart';
+import { CartProvider } from './CartContext'; 
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([{
+  path:'/',
+  element:<App/>,
+  
+},
+{
+  path: '/Cart',
+  element: <Cart />,
+}
+])
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProviderContext>
+    <CartProvider>
+   <RouterProvider router={router}/>
+   </CartProvider>
+    </ThemeProviderContext>
+    
   </React.StrictMode>
 );
 
