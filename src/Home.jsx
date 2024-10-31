@@ -15,6 +15,7 @@ const Home = () => {
   const [cartCount, setCartCount] = useState(0);
   const [products, setProducts] = useState([]);
   const { cart, setCart } = useCart();
+  
   const [filteredProducts, setFilteredProducts] = useState([]);
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
@@ -22,13 +23,31 @@ const Home = () => {
 
   
 
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
+  // useEffect(() => {
+  //   setFilteredProducts(products);
+  // }, [products]);
+
+  useEffect(()=>{
+
+    const storedFilter = localStorage.getItem('filteredProducts');
+
+    if(storedFilter){
+      setFilteredProducts(JSON.parse(storedFilter));
+    }
+    else{
+      setFilteredProducts(products);
+    }
+  },[])
 
   useEffect(() => {
     setCartCount(cart.length);
   }, [cart]);
+
+  useEffect(()=>{
+
+    localStorage.setItem('filteredProducts', JSON.stringify(filteredProducts));
+
+  },[filteredProducts])
 
   useEffect(() => {
     const fetchProducts = async () => {

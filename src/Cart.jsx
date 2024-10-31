@@ -8,11 +8,16 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const Cart = () => {
   const { cart, setCart } = useCart();  
   const[cartCount, setCartCount] = useState(0);
+  const[totalAmount, setTotalAmount] = useState(0);
 
   useEffect(()=>{
     const quantities = cart.reduce((acc, curr)=>curr.quantity+acc,0);
 
     setCartCount(quantities);
+
+    const amount = cart.reduce((acc, curr)=>(curr.quantity*curr.price)+acc,0)
+
+    setTotalAmount(amount);
   },[cart])
 
   const handleOnClick = (product)=>{
@@ -37,6 +42,12 @@ const Cart = () => {
           <button disabled style={{backgroundColor:'lightGrey', display:'flex', alignItems:'center'}}>Quantity {product.quantity} <ArrowDropDownIcon/></button>
        
            <button onClick={()=>handleOnClick(product)} style={{backgroundColor:'white', border:'1px solid green', borderRadius:'5px',cursor:'pointer', padding:'0.5rem'}}>Delete</button> 
+        
+          <hr style={{border:'1rem solid black', width:'100%'}}/>
+
+          <Typography variant="h4">Total Amount: {totalAmount}</Typography>
+
+
         </Box>
          
          
