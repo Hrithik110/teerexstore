@@ -1,7 +1,7 @@
 import React from "react";
 
 import { createTheme } from "@mui/material";
-import { grey, white,black } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 
 export const lightTheme = createTheme({
     palette:{

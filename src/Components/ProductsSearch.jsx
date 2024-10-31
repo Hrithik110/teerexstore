@@ -20,7 +20,7 @@ const ProductsSearch = ({products, cart, setCart,filteredProducts,setFilteredPro
 
     const handleOnSubmit = (e)=>{
         e.preventDefault();
-        if(searchInput==""){
+        if(searchInput===""){
             alert(`You are missing search text`);
             return;
         }
@@ -59,7 +59,7 @@ const ProductsSearch = ({products, cart, setCart,filteredProducts,setFilteredPro
         ))}
 
         {
-            filteredProducts.length===0 && <Box sx={{display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', gap:'2rem'}}><SentimentSatisfiedIcon/> There is no product matching your search. Please search something else.</Box>
+            filteredProducts && filteredProducts.length === 0 && <Box sx={{display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', gap:'2rem'}}><SentimentSatisfiedIcon/> There is no product matching your search. Please search something else.</Box>
         }
     </Box>
 

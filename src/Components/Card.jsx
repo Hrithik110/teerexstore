@@ -15,7 +15,7 @@ const Card = ({product,cart,setCart}) => {
 
     useEffect(()=>{
             const isPresentinCart = cart.find((prod)=>prod.id===product.id);
-            setAddedToCart(isPresentinCart);
+            setAddedToCart(!!isPresentinCart);
 
             if(isPresentinCart){
                 const cartProduct = cart.filter((p)=> p.id===product.id);
@@ -70,7 +70,7 @@ const Card = ({product,cart,setCart}) => {
 
         setCart(cartData);
        }
-    },[addedToCart])
+    },[addedToCart,cart])
     const theme = useTheme();
   return (
     <Stack sx={{display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center', padding:'1rem',borderRadius: '12px',
